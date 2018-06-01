@@ -1,4 +1,4 @@
-package com.github.jengo.gbdt;
+package com.github.jengo.xgboost;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -7,23 +7,22 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  * {@link Node}
  */
 public class Node {
-    public static final int LT = 0;
-    public static final int GE = 1;
-    public static final int UNKNOWN = 2;
-    public static final int CHILDSIZE = 3;
-
+    /** node index */
+    public int nodeIdx = -1;
     /** feature index */
     public int feaIdx = -1;
     /** feature threshold */
-    public double feaThr = 0;
-    /** predict score */
-    public double score = 0;
-    /** is leaf */
+    public double feaThr = 0.0D;
+    /** feature score */
+    public double score = 0.0D;
+    /** is leaf node */
     public boolean isLeaf = false;
-    /** leaf index */
-    public int leafIdx = -1;
-    /** children */
-    public Node[] children = {null, null, null};
+    /** left child */
+    public Node leftChild = null;
+    /** right child */
+    public Node rightChild = null;
+    /** missing then take the left child */
+    public boolean missingThenTakeLeftChild = true;
 
     @Override
     public String toString() {

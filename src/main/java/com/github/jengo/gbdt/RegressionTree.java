@@ -113,9 +113,9 @@ public class RegressionTree {
     }
 
     private static double predict(Node node, Tuple t, List<Double> w) {
-        if (node.isLeaf)
+        if (node.isLeaf) {
             return node.score;
-
+        }
         Node childNode = locateChildNode(node, t);
         if (childNode != null) {
             double x = (childNode.score - node.score);
